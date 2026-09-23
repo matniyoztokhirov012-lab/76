@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080b14">
+    <title>Matniyoz | Frontend Developer</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #080b14;
+            color: #f5f7ff;
+            line-height: 1.6
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+
+        button,
+        input,
+        textarea {
+            font: inherit
+        }
+
+        .container {
+            width: min(1120px, 92%);
+            margin: auto
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 20;
+            background: rgba(8, 11, 20, .82);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid #202536
+        }
+
+        .nav {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800
+        }
+
+        .logo span,
+        .accent {
+            color: #9b5cff
+        }
+
+        nav {
+            display: flex;
+            gap: 28px
+        }
+
+        nav a {
+            font-size: 14px;
+            color: #d8dced;
+            transition: .2s
+        }
+
+        nav a:hover {
+            color: #a96cff
+        }
+
+        .menu {
+            display: none;
+            background: none;
+            border: 0;
+            color: white;
+            font-size: 28px;
+            cursor: pointer
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 20px;
+            border-radius: 12px;
+            border: 1px solid #a65cff;
+            background: linear-gradient(135deg, #7b35ff, #b05cff);
+            color: #fff;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .2s
+        }
+
+        .btn:hover {
+            transform: translateY(-2px)
+        }
+
+        .btn.alt {
+            background: transparent;
+            border-color: #677089
+        }
+
+        section {
+            padding: 95px 0
+        }
+
+        .hero {
+            min-height: 720px;
+            padding-top: 150px;
+            display: flex;
+            align-items: center
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center
+        }
+
+        .badge {
+            color: #a86aff;
+            font-weight: 700;
+            margin-bottom: 10px
+        }
+
+        h1 {
+            font-size: clamp(42px, 6vw, 72px);
+            line-height: 1.05;
+            margin-bottom: 18px
+        }
+
+        h1 span {
+            color: #a45dff
+        }
+
+        .hero h2 {
+            font-size: 24px;
+            margin-bottom: 16px
+        }
+
+        .hero p {
+            color: #aeb6cb;
+            max-width: 550px;
+            margin-bottom: 25px
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap
+        }
+
+        .social {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px
+        }
+
+        .social a {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #2c3449;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: #101523
+        }
+
+        .visual {
+            height: 390px;
+            border-radius: 28px;
+            border: 1px solid #352d61;
+            background: radial-gradient(circle at 70% 35%, #4c20b5 0, #21174c 28%, #0e1322 65%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 70px rgba(123, 53, 255, .2);
+            position: relative;
+            overflow: hidden
+        }
+
+        .monitor {
+            width: 78%;
+            height: 62%;
+            border: 10px solid #171b2a;
+            border-radius: 15px;
+            background: #0b0e18;
+            box-shadow: 0 25px 40px #0008;
+            position: relative
+        }
+
+        .code {
+            padding: 22px;
+            color: #8cf2ff;
+            font-family: monospace;
+            font-size: 13px;
+            line-height: 1.8
+        }
+
+        .code b {
+            color: #bb76ff
+        }
+
+        .code i {
+            color: #65e6a1
+        }
+
+        .glow {
+            position: absolute;
+            width: 170px;
+            height: 170px;
+            background: #792dff;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: .45
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 45px
+        }
+
+        .title small {
+            color: #a35dff;
+            font-weight: 800
+        }
+
+        .title h2 {
+            font-size: 36px;
+            margin-top: 6px
+        }
+
+        .title p {
+            color: #9fa8bd;
+            max-width: 600px;
+            margin: 10px auto
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px
+        }
+
+        .card {
+            background: #0e1320;
+            border: 1px solid #20283b;
+            border-radius: 18px;
+            padding: 25px
+        }
+
+        .card h3 {
+            margin-bottom: 12px
+        }
+
+        .muted {
+            color: #a6afc3
+        }
+
+        .info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 22px
+        }
+
+        .info div {
+            padding: 14px;
+            background: #111827;
+            border-radius: 12px;
+            text-align: center
+        }
+
+        .info strong {
+            display: block;
+            color: #fff
+        }
+
+        .info span {
+            font-size: 12px;
+            color: #8e98ad
+        }
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px
+        }
+
+        .skill {
+            background: #0e1320;
+            border: 1px solid #20283b;
+            border-radius: 15px;
+            padding: 22px;
+            text-align: center
+        }
+
+        .skill .icon {
+            font-size: 30px;
+            margin-bottom: 7px
+        }
+
+        .skill span {
+            color: #b5bdd0;
+            font-size: 13px
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px
+        }
+
+        .project {
+            background: #0e1320;
+            border: 1px solid #20283b;
+            border-radius: 16px;
+            overflow: hidden
+        }
+
+        .project-img {
+            height: 170px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, #171b35, #3b1d75)
+        }
+
+        .project-img span {
+            font-size: 38px
+        }
+
+        .project-body {
+            padding: 20px
+        }
+
+        .project-body p {
+            color: #9fa8bc;
+            font-size: 14px;
+            margin: 8px 0 14px
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px
+        }
+
+        .contact-list {
+            display: grid;
+            gap: 12px;
+            margin-top: 20px
+        }
+
+        .contact-item {
+            padding: 16px;
+            background: #0e1320;
+            border: 1px solid #20283b;
+            border-radius: 13px
+        }
+
+        .contact-item small {
+            color: #8993a9;
+            display: block
+        }
+
+        .contact-item b {
+            color: #fff
+        }
+
+        form {
+            display: grid;
+            gap: 12px
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            background: #0e1320;
+            border: 1px solid #273149;
+            color: white;
+            padding: 14px;
+            border-radius: 11px;
+            outline: none
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #9655ff
+        }
+
+        textarea {
+            min-height: 140px;
+            resize: vertical
+        }
+
+        footer {
+            border-top: 1px solid #202536;
+            padding: 25px 0;
+            color: #788298;
+            text-align: center;
+            font-size: 13px
+        }
+
+        @media(max-width:800px) {
+            nav {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                display: none;
+                flex-direction: column;
+                gap: 0;
+                background: #0a0e18;
+                border-bottom: 1px solid #222a3b;
+                padding: 10px 5%
+            }
+
+            nav.open {
+                display: flex
+            }
+
+            nav a {
+                padding: 14px 0
+            }
+
+            header .btn {
+                display: none
+            }
+
+            .menu {
+                display: block
+            }
+
+            .hero {
+                padding-top: 120px;
+                min-height: auto
+            }
+
+            .hero-grid,
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr
+            }
+
+            .visual {
+                height: 300px
+            }
+
+            .skills {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            .projects {
+                grid-template-columns: 1fr
+            }
+
+            .info {
+                grid-template-columns: 1fr
+            }
+
+            section {
+                padding: 75px 0
+            }
+
+            .title h2 {
+                font-size: 29px
+            }
+
+            h1 {
+                font-size: 46px
+            }
+        }
+
+        @media(max-width:420px) {
+            .container {
+                width: 90%
+            }
+
+            h1 {
+                font-size: 39px
+            }
+
+            .hero h2 {
+                font-size: 20px
+            }
+
+            .skills {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .visual {
+                height: 250px
+            }
+
+            .monitor {
+                width: 86%;
+                height: 55%
+            }
+
+            .code {
+                font-size: 9px;
+                padding: 12px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container nav">
+            <a class="logo" href="#home">&lt;/&gt; <span>Matniyoz</span></a>
+            <nav id="nav">
+                <a href="#home">Bosh sahifa</a>
+                <a href="#about">Men haqimda</a>
+                <a href="#skills">Ko‘nikmalar</a>
+                <a href="#projects">Loyihalar</a>
+                <a href="#contact">Kontakt</a>
+            </nav>
+            <a class="btn" href="#contact">Bog‘lanish</a>
+            <button class="menu" id="menu" aria-label="Menyu">☰</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="container hero-grid">
+                <div>
+                    <div class="badge">Salom, men 👋</div>
+                    <h1>Matniyoz <span>Tokhirov</span></h1>
+                    <h2>Frontend Developer va Web Dizayner</h2>
+                    <p>Zamonaviy, tezkor va telefonlarga mos web-saytlar yarataman. G‘oyalarni chiroyli dizayn va kod
+                        orqali haqiqiy loyihaga aylantiraman.</p>
+                    <div class="actions">
+                        <a class="btn" href="#projects">Loyihalarim →</a>
+                        <a class="btn alt" href="#contact">Kontakt</a>
+                    </div>
+                    <div class="social">
+                        <a href="https://t.me/matniyoz_012" target="_blank">✈</a>
+                        <a href="#projects">⌘</a>
+                        <a href="#contact">◎</a>
+                    </div>
+                </div>
+                <div class="visual">
+                    <div class="glow"></div>
+                    <div class="monitor">
+                        <div class="code">
+                            <b>&lt;div</b> class=<i>"developer"</i><b>&gt;</b><br>
+                            &nbsp;&nbsp;<b>&lt;h1&gt;</b>Dream Code<b>&lt;/h1&gt;</b><br>
+                            &nbsp;&nbsp;<b>&lt;p&gt;</b>Build. Create. Grow.<b>&lt;/p&gt;</b><br>
+                            &nbsp;&nbsp;<b>&lt;button&gt;</b>Start<b>&lt;/button&gt;</b><br>
+                            <b>&lt;/div&gt;</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <div class="title"><small>Men haqimda</small>
+                    <h2>Kichik maqsadlar — katta natijalar</h2>
+                </div>
+                <div class="about-grid">
+                    <div class="card">
+                        <h3>Men haqimda</h3>
+                        <p class="muted">Men — Matniyoz Tokhirov, frontend dasturlash va web dizaynga qiziqaman.
+                            Zamonaviy texnologiyalarni o‘rganib, foydali va chiroyli loyihalar yaratishga harakat
+                            qilaman.</p>
+                        <div class="info">
+                            <div><strong>1+</strong><span>Tajriba</span></div>
+                            <div><strong>10+</strong><span>Loyihalar</span></div>
+                            <div><strong>24/7</strong><span>O‘rganish</span></div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Nimalarni bilaman?</h3>
+                        <p class="muted">HTML, CSS va JavaScript yordamida responsive saytlar yarataman. Figma
+                            dizaynlarini kodga aylantirishni ham o‘rganaman.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="container">
+                <div class="title"><small>Ko‘nikmalarim</small>
+                    <h2>Texnologiyalar</h2>
+                </div>
+                <div class="skills">
+                    <div class="skill">
+                        <div class="icon">🌐</div><b>HTML</b><br><span>Web tuzilishi</span>
+                    </div>
+                    <div class="skill">
+                        <div class="icon">🎨</div><b>CSS</b><br><span>Dizayn va animatsiya</span>
+                    </div>
+                    <div class="skill">
+                        <div class="icon">⚡</div><b>JavaScript</b><br><span>Interaktivlik</span>
+                    </div>
+                    <div class="skill">
+                        <div class="icon">📱</div><b>Responsive</b><br><span>Telefonlarga mos</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <div class="title"><small>Loyihalarim</small>
+                    <h2>Oxirgi loyihalarim</h2>
+                </div>
+                <div class="projects">
+                    <div class="project">
+                        <div class="project-img"><span>💻</span></div>
+                        <div class="project-body">
+                            <h3>Portfolio Sayt</h3>
+                            <p>Shaxsiy portfolio uchun zamonaviy web-sayt.</p><a class="accent" href="#contact">Ko‘rish
+                                →</a>
+                        </div>
+                    </div>
+                    <div class="project">
+                        <div class="project-img"><span>✅</span></div>
+                        <div class="project-body">
+                            <h3>To-Do List</h3>
+                            <p>Vazifalarni qo‘shish va boshqarish ilovasi.</p><a class="accent" href="#contact">Ko‘rish
+                                →</a>
+                        </div>
+                    </div>
+                    <div class="project">
+                        <div class="project-img"><span>☁️</span></div>
+                        <div class="project-body">
+                            <h3>Ob-havo ilovasi</h3>
+                            <p>Shaharlar bo‘yicha ob-havo ma’lumotlari.</p><a class="accent" href="#contact">Ko‘rish
+                                →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <div class="title"><small>Kontakt</small>
+                    <h2>Aloqa uchun</h2>
+                    <p>Savol, loyiha yoki hamkorlik bo‘yicha yozishingiz mumkin.</p>
+                </div>
+                <div class="contact-grid">
+                    <div>
+                        <div class="contact-list">
+                            <a class="contact-item" href="https://t.me/matniyoz_012"
+                                target="_blank"><small>Telegram</small><b>@matniyoz_012 →</b></a>
+                            <a class="contact-item" href="tel:+998901234567"><small>Telefon</small><b>+998 90 123 45 67
+                                    →</b></a>
+                            <a class="contact-item"
+                                href="mailto:matniyoz@gmail.com"><small>Email</small><b>matniyoz@gmail.com →</b></a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <form id="form">
+                            <input id="name" placeholder="Ismingiz" required>
+                            <input id="phone" placeholder="Telefon raqamingiz" required>
+                            <textarea id="message" placeholder="Xabar..." required></textarea>
+                            <button class="btn" type="submit">Yuborish ✈</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>© 2026 Matniyoz Tokhirov. Barcha huquqlar himoyalangan.</footer>
+
+    <script>
+        const menu = document.getElementById('menu');
+        const nav = document.getElementById('nav');
+        menu.addEventListener('click', () => nav.classList.toggle('open'));
+        document.querySelectorAll('nav a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+        document.getElementById('form').addEventListener('submit', e => {
+            e.preventDefault();
+            const n = document.getElementById('name').value.trim();
+            const p = document.getElementById('phone').value.trim();
+            const m = document.getElementById('message').value.trim();
+            if (n && p && m) {
+                const text = `Salom! Men ${n}. Telefon: ${p}. Xabar: ${m}`;
+                window.open('https://t.me/matniyoz_012?text=' + encodeURIComponent(text), '_blank');
+            }
+        });
+    </script>
+</body>
+
+</html>
